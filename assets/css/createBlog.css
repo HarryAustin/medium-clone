@@ -1,0 +1,188 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-size:20px;
+}
+
+@font-face{
+    font-family:montserratBold;
+    src:url('./fonts/Montserrat-Bold.ttf');
+}
+
+@font-face{
+    font-family:montserratExtraBold;
+    src:url('./fonts/Montserrat-ExtraBold.ttf');
+}
+
+@font-face{
+    font-family:montserratBlack;
+    src:url('./fonts/Montserrat-Black.ttf');
+}
+
+@font-face{
+    font-family:montserratMedium;
+    src:url('./fonts/Montserrat-Medium.ttf');
+}
+
+@font-face{
+    font-family:montserratSemiBold;
+    src:url('./fonts/Montserrat-SemiBold.ttf');
+}
+
+@font-face{
+    font-family:poppinsBlack;
+    src:url('./fonts/Poppins-Black.ttf');
+}
+
+@font-face{
+    font-family:poppinsBold;
+    src:url('./fonts/Poppins-Bold.ttf');
+}
+
+@font-face{
+    font-family:poppinsExtraBold;
+    src:url('./fonts/Poppins-ExtraBold.ttf');
+}
+
+@font-face{
+    font-family:poppinsMedium;
+    src:url('./fonts/Poppins-Medium.ttf');
+}
+
+@font-face{
+    font-family:poppinsSemiBold;
+    src:url('./fonts/Poppins-SemiBold.ttf');
+}
+
+
+:root{
+    --white-in-black:rgb(227, 227, 227);
+    --black:#000000;
+    --background:#FAFAFA;
+    --grey:#6D6D6D;
+}
+
+.container{
+    width:90%;
+    margin:1rem auto;
+}
+
+body{
+    background:var(--background);
+    overflow-x: hidden;
+}
+
+.container > h1{
+    font-family:montserratBold;
+    font-size:0.8rem;
+    text-align:center;
+    margin:3rem 0 1.5rem 0;
+}
+
+.categories{
+    margin:1.5rem 0;
+}
+.categories > div{
+    display:flex;
+}
+
+
+.categories h1{
+    font-family:montserratBlack;
+    font-size:1rem;
+    letter-spacing:0.5px;
+    line-height:1.2rem;
+    margin-bottom:1rem;
+    color:rgba(0, 0, 0, 0.8);
+}
+
+.categories input[type="checkbox"]{
+    display:none;
+}
+
+.categories label{
+    margin-right:1rem;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight:900;
+    font-size:0.7rem;
+    color:rgba(0, 0, 0, 0.6);
+    border:1px solid rgba(0, 0, 0, 0.6);
+    padding:0.35rem;
+    border-radius:1rem;
+    outline:none;
+}
+
+.check-with-label:checked + .business-label,
+.check-with-label:checked + .others-label,
+.check-with-label:checked + .checked-label{
+    background:rgba(0, 0, 0, 0.1);
+}
+
+.form-inputs{
+    margin:2rem 0;
+}
+
+.form-class{
+    /* background:red; */
+    margin:1rem 0;
+    width:100%;
+}
+
+.form-class input, 
+.form-class textarea
+{
+    width:100%;
+    border: none;
+    border-bottom:1px solid rgba(112, 112, 112, 0.5);
+    padding:0.4rem 0.1rem;
+    outline:none;
+    background:transparent;
+    font-family:poppinsSemiBold;
+    font-size:0.9rem;
+    line-height:1.2rem;
+}
+
+#body{
+    padding-bottom: 5rem;
+    border:1px solid rgba(112, 112, 112, 0.5);
+    height:10rem;
+}
+
+.form-class label{
+    display:block;
+    margin:0.5rem 0;
+    font-family:montserratBlack;
+    font-size:0.7rem;
+    color:rgba(0, 0, 0, 0.63);
+}
+
+.form-inputs button{
+    width:100%;
+    background:var(--black);
+    color:var(--white-in-black);
+    border:none;
+    outline:none;
+    padding:0.6rem 0;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size:0.7rem;
+    font-weight:700;
+    border-radius:10px;
+    cursor:pointer;
+}
+
+.form-inputs button:hover{
+    background:var(--white-in-black);
+    color:var(--black);
+    border:1px solid rgba(0, 0, 0, 0.2);
+}
+
+
+/* Responsive */
+
+@media screen and (min-width:768px){
+    .max-width-container{
+        width:30%;
+        margin:auto;
+    }  
+}

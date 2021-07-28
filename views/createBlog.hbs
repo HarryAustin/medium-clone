@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>create blog</title>
+    <link rel="stylesheet" href="createBlog.css" type="text/css">
+</head>
+<body>
+    <div class="container max-width-container">
+        <h1>Create a New Topic</h1>
+        <form>
+            <div class="categories">
+                <h1>Categories</h1>
+                <div>
+                    <div>
+                        <input type="checkbox"  value="Tech" class="check-with-label" id="tech-label">
+                        <label for="tech-label" class="checked-label">Tech</label>
+                    </div>
+                    <div>
+                        <input type="checkbox"  value="Business" class="check-with-label" id="business-label">
+                        <label for="business-label" class="checked-label">Business</label>
+                    </div>
+                    <div>
+                        <input type="checkbox"  value="Others" class="check-with-label" id="others-label">
+                        <label for="others-label" class="checked-label">Others</label>
+                    </div>
+                </div>
+            </div>
+            <div class="form-inputs">
+                <div class="form-class">
+                    <label for="title">title</label>
+                    <input type="text" id="title">
+                </div>
+                <div class="form-class">
+                    <label for="description">description</label>
+                    <input type="text" id="description">
+                </div>
+                <div class="form-class">
+                    <label for="body">body</label>
+                    <textarea type="text" id="body"></textarea>
+                </div>
+                <button type="submit">Start Blogging</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

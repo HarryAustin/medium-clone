@@ -7,6 +7,7 @@ const postSchema = new Schema({
     description: { type: String },
     body: { type: String },
     category: { type: String },
+    thumbnail: {type: String },
     user: { type: Schema.Types.ObjectId, ref: 'user'},
     comments: { type: Schema.Types.ObjectId, ref: 'comments'},
     timePosted: { type: Date, default: Date.now }

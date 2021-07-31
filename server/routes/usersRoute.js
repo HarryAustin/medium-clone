@@ -26,7 +26,7 @@ const upload = multer({
 // END 
 
 
-router.post('/', createUserController);
+router.post('/', upload.single('upload'), createUserController);
 router.post('/update/:id', upload.single('upload'), updateUserController);
 router.get('/', usersController);
 

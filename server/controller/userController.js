@@ -3,8 +3,19 @@ const { ErrorHandler } = require('../services/errorHandler');
 
 const createUserController = async (req, res) => {
     try{
-        const user = await userModel.create(req.body);
-        res.status(201).json({user:user, message:'success'})
+        // i have to check if a file is uploaded as well
+        let profilePicture = null;
+        if(req.file){
+            profilePicture = req.file.path
+        }
+        const user = await userModel({
+            name:req.body.name,
+            username:req.body.username,
+            profilePicture:profilePicture
+        })
+        user.save()
+        // res.status(200).json({user:userData, message:'success'})
+        res.json({user:user, message:'success'})
     }catch(err){
         console.log(err.message)
         const errors = ErrorHandler(err);
@@ -14,17 +25,14 @@ const createUserController = async (req, res) => {
 
 const updateUserController = async (req, res) => {
     try{
-        const userId = req.params.id;
         if(req.file){
-            const user = await userModel.findByIdAndUpdate(userId, {
-                $set:{
-                    profilePicture:req.file.path
-                }
-            }, {new:true})
+            req.body.profilePicture = req.file.path
         }
+        const userId = req.params.id;
         const user = await userModel.findByIdAndUpdate(userId, req.body, {new:true})
-        res.status(200).json({updatedUser: user })
+        res.status(200).json({updatedUser: user, message:"updated"})
     }catch(err){
+        console.log(err.message)
         const errors = ErrorHandler(err);
         res.status(400).json({ errors : errors })
     }

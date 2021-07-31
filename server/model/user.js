@@ -7,21 +7,21 @@ const userSchema = new Schema({
         type: String,
         required: [true, 'User must have a name'],
         lowercase: true
-    },
-    profilePicture: String,
+    },// Can be included initially
+    profilePicture: String, // Can be included initially
     username: {
         type: String,
         required: [true, 'username is required'],
         minlength: [3, 'username must be greater than 3'],
         unique:[true, 'username already taken']
-    },
+    }, // Can be included initially
     followers: [{
         type: Schema.Types.ObjectId,
-        ref: 'user'
+        ref: 'userModel'
     }],
     following: [{
         type: Schema.Types.ObjectId,
-        ref: 'user'
+        ref: 'userModel'
     }],
     posts: [{
         type: Schema.Types.ObjectId,

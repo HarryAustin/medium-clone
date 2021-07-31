@@ -4,11 +4,11 @@ const dotenv = require('dotenv');
 const express = require('express');
 const hbs = require('express-handlebars');
 const morgan = require('morgan');
-// const multer = require('multer'); // FOR MEDIA FILES/UPLOAD
 const path = require('path')
-// const randomString = require('randomstring');
 // For Routes
+const postRouter = require('./server/routes/postsRoute');
 const userRouter = require('./server/routes/usersRoute');
+
 
 // ----- SETTINGS-------//
 
@@ -45,17 +45,18 @@ app.use('/uploads', express.static(path.resolve(__dirname, 'media/profile-pictur
 const PORT = process.env.PORT || 8080;
 
 // URL SETUP
+// app.use('/:loggedId', postRouter);
+// const { indexController } = require('./server/controller/postsController')
+// app.get('/:id', indexController)
+app.use('/:loggedId', postRouter)
 app.use('/api/users', userRouter)
-app.get('/', (req, res) => {
-    res.render('main', {layout:false});
-}) // For my base page
 // Decided not to use layouts
 // My media are still not sorted in the frontend, so i will fix that.
 // To access media files or static files in browser, just use the path in the middleware and the name of the file.
 // Also for our user logic for logged in users, i will create a route middleware for post/template required stuff, 
 // But in the middleware url, i will make it "app.use(/posts/:id", postsRouter)
+// app.use('/:id', postRouter) // where id acts as a session id, and the router works for templates
 //------ END SETTINGS-----//
-
 
 // DATABASE CONNECTION
 connectDB(() =>

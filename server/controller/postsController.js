@@ -1,14 +1,19 @@
 const userModel = require('../model/user');
 const postModel = require('../model/posts');
 
+
 const indexController = async (req, res) => {
     try{
         // The index Controller handles the posts of followers a logged user has.
         const loggedId = req.params.loggedId;
         const followersId = await userModel.findById(loggedId, {"followers":1, _id:0});
         const { followers } = followersId
-        const userFollowedPosts = await postModel.find({user:{$in:followers}});
-        res.json({ user: userFollowedPosts })
+        const posts = await postModel.find({user:{$in:followers}}, null, {sort:{timePosted:'-1'}}).lean();
+        const indexArticle = {
+            loggedId:loggedId,
+            posts:posts
+        }
+        res.render('main', { layout:false, indexArticle:indexArticle })
     }catch(err){
         console.log(err)
     }
@@ -23,21 +28,22 @@ const createController = async (req, res) => {
         if(userId){
             req.body.user = userId;
         }
-        console.log(req.body)
-        console.log(req.file)
         const result = await postModel.create(req.body);
         const updatedUser = await userModel.findByIdAndUpdate(userId, {
             $push:{
                 posts:result
             }
         }, {new:true});
-        res.json({
-            postResult:result,
-            updatedUserPosts: {_id: updatedUser._id, posts: updatedUser.posts}
-        })
+        res.redirect(`createPost`)
     }catch(err){
         console.log(err)
     }
+}
+
+
+const createPageController = async (req, res) => {
+    const loggedId = req.params.loggedId;
+    res.render('createBlog', {layout:false, loggedId:loggedId})
 }
 
 
@@ -79,8 +85,29 @@ const followController = async (req, res) => {
     }
 }
 
+
+const getArticle = async (req, res) => {
+    const articleId = req.params.id;
+    const loggedId = req.params.loggedId;
+    const article = await postModel.findById(articleId).lean()
+    const userArticle = await userModel.findById(article.user).lean()
+    const followersId = await userModel.findById(loggedId, {"followers":1, _id:0});
+    const { followers } = followersId;
+    const otherRelatedPost = await postModel.find({$and: [{user:{$in:followers}}, {_id:{$ne:articleId}}]}).lean();
+    const getArticle = {
+        article:article, 
+        relatedPosts:otherRelatedPost, 
+        userArticle:userArticle,
+        loggedId: loggedId
+    }
+    res.render('Article', {layout:false, getArticle:getArticle})
+}
+
+
 module.exports = {
     createController,
+    createPageController,
     followController,
     indexController,
+    getArticle
 }

@@ -7,53 +7,54 @@
 
 @font-face{
     font-family:montserratBold;
-    src:url('./fonts/Montserrat-Bold.ttf');
+    src:url('/fonts/Montserrat-Bold.ttf');
 }
 
 @font-face{
     font-family:montserratExtraBold;
-    src:url('./fonts/Montserrat-ExtraBold.ttf');
+    src:url('/fonts/Montserrat-ExtraBold.ttf');
 }
 
 @font-face{
     font-family:montserratBlack;
-    src:url('./fonts/Montserrat-Black.ttf');
+    src:url('/fonts/Montserrat-Black.ttf');
 }
 
 @font-face{
     font-family:montserratMedium;
-    src:url('./fonts/Montserrat-Medium.ttf');
+    src:url('/fonts/Montserrat-Medium.ttf');
 }
 
 @font-face{
     font-family:montserratSemiBold;
-    src:url('./fonts/Montserrat-SemiBold.ttf');
+    src:url('/fonts/Montserrat-SemiBold.ttf');
 }
 
 @font-face{
     font-family:poppinsBlack;
-    src:url('./fonts/Poppins-Black.ttf');
+    src:url('/fonts/Poppins-Black.ttf');
 }
 
 @font-face{
     font-family:poppinsBold;
-    src:url('./fonts/Poppins-Bold.ttf');
+    src:url('/fonts/Poppins-Bold.ttf');
 }
 
 @font-face{
     font-family:poppinsExtraBold;
-    src:url('./fonts/Poppins-ExtraBold.ttf');
+    src:url('/fonts/Poppins-ExtraBold.ttf');
 }
 
 @font-face{
     font-family:poppinsMedium;
-    src:url('./fonts/Poppins-Medium.ttf');
+    src:url('/fonts/Poppins-Medium.ttf');
 }
 
 @font-face{
     font-family:poppinsSemiBold;
-    src:url('./fonts/Poppins-SemiBold.ttf');
+    src:url('/fonts/Poppins-SemiBold.ttf');
 }
+
 
 
 :root{
@@ -125,7 +126,7 @@ body{
 
 .form-class{
     /* background:red; */
-    margin:1rem 0;
+    margin:1.2rem 0;
     width:100%;
 }
 
@@ -135,7 +136,7 @@ body{
     width:100%;
     border: none;
     border-bottom:1px solid rgba(112, 112, 112, 0.5);
-    padding:0.4rem 0.1rem;
+    padding:0rem 0.1rem;
     outline:none;
     background:transparent;
     font-family:poppinsSemiBold;
@@ -151,11 +152,41 @@ body{
 
 .form-class label{
     display:block;
-    margin:0.5rem 0;
+    margin:0.3rem 0;
     font-family:montserratBlack;
     font-size:0.7rem;
     color:rgba(0, 0, 0, 0.63);
 }
+
+
+input::-webkit-file-upload-button{
+    display:none;
+}
+
+input::-webkit-input-placeholder{
+    display:none;
+}
+
+.thumbnail{
+    padding:0.6rem 0;
+    margin:0.3rem 0 0.8rem 0;
+    width:100%;
+}
+
+
+#thumbnail{
+    font-size:0.9rem;
+    border:none;
+    margin-left:-8rem;
+}
+
+.file-form{
+    display:flex;
+    justify-content:flex-start;
+    align-items:center;
+    border-bottom:1px solid rgba(112, 112, 112, 0.5)
+}
+
 
 .form-inputs button{
     width:100%;
@@ -185,4 +216,8 @@ body{
         width:30%;
         margin:auto;
     }  
+
+    #thumbnail{
+        margin-left:-11rem;
+    }
 }

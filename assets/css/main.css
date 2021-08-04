@@ -73,6 +73,10 @@ body{
     overflow-x: hidden;
 }
 
+a{
+    text-decoration:none;
+}
+
 .header{
     display:flex;
     width:100%;
@@ -124,9 +128,14 @@ body{
     border-radius:5px;
 }
 
+.not_available{
+    font-family: montserratBlack;
+    text-align:center;
+}
+
 .background-wrapper{
     background:rgba(227, 227, 227, 0.4);
-    margin:1.5rem 0;
+    margin:1rem 0;
 }
 
 .blog-article{
@@ -167,6 +176,7 @@ body{
     font-family:montserratBlack;
     font-size:0.9rem;
     line-height:1rem;
+    color:var(--black);
 }
 
 .blog-summary{

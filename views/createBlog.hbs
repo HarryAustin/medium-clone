@@ -5,12 +5,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>create blog</title>
-    <link rel="stylesheet" href="createBlog.css" type="text/css">
+    <link rel="stylesheet" href="/css/createBlog.css" type="text/css">
 </head>
 <body>
     <div class="container max-width-container">
         <h1>Create a New Topic</h1>
-        <form>
+        <form method="POST" action="/posts/{{loggedId}}/create" enctype="multipart/form-data" >
             <div class="categories">
                 <h1>Categories</h1>
                 <div>
@@ -29,17 +29,21 @@
                 </div>
             </div>
             <div class="form-inputs">
+                <div class="form-class file-form">
+                    <label for="thumbnail" class="thumbnail">thumbnail</label>
+                    <input type="file" id="thumbnail" name="thumbnail">
+                </div>
                 <div class="form-class">
                     <label for="title">title</label>
-                    <input type="text" id="title">
+                    <input type="text" id="title" name="title">
                 </div>
                 <div class="form-class">
                     <label for="description">description</label>
-                    <input type="text" id="description">
+                    <input type="text" id="description" name="description">
                 </div>
                 <div class="form-class">
                     <label for="body">body</label>
-                    <textarea type="text" id="body"></textarea>
+                    <textarea type="text" id="body" name="body"></textarea>
                 </div>
                 <button type="submit">Start Blogging</button>
             </div>

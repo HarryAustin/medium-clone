@@ -28,7 +28,25 @@ app.use(morgan('tiny'))
 
 // View engine
 app.set('view engine', 'hbs')
-app.engine('hbs', hbs({extname:'hbs'}))
+app.engine('hbs', hbs({extname:'hbs', helpers:{
+            sliceText: (text) => {
+                if(text){
+                    if(text.length < 40){
+                        return text
+                    }else{
+                        return `${text.slice(0, 40)}...`
+                    }
+                }
+            },
+            dateLocale: (date) => {
+                if(date){
+                    return date.toLocaleDateString()
+                }
+            }
+        }
+    }
+))
+
 
 // Assets setup
 app.use('/css', express.static(path.resolve(__dirname, 'assets/css')))
@@ -39,17 +57,17 @@ app.use('/fonts', express.static(path.resolve(__dirname, 'assets/fonts')))
 // to access images in frontend has to be img/nshsj.png
 
 // Media middleware
-app.use('/uploads', express.static(path.resolve(__dirname, 'media/profile-picture')));
+app.use('/media', express.static(path.resolve(__dirname, 'media/')));
 
 // Port setupp
 const PORT = process.env.PORT || 8080;
 
 // URL SETUP
-// app.use('/:loggedId', postRouter);
-// const { indexController } = require('./server/controller/postsController')
-// app.get('/:id', indexController)
-app.use('/:loggedId', postRouter)
-app.use('/api/users', userRouter)
+app.get('/', (req, res) => {
+    res.render('index', {layout:false});
+});
+app.use('/posts/:loggedId', postRouter);
+app.use('/api/users', userRouter);
 // Decided not to use layouts
 // My media are still not sorted in the frontend, so i will fix that.
 // To access media files or static files in browser, just use the path in the middleware and the name of the file.

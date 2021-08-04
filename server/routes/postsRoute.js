@@ -1,8 +1,11 @@
 const express = require('express');
 const router = express.Router({ mergeParams:true }) //used to make id from middleware visible.
+// const router = express.Router() //used to make id from middleware visible.
 const { createController, 
+        createPageController,
         followController,
-        indexController
+        indexController,
+        getArticle
      } = require('../controller/postsController');
 
 const multer = require('multer'); // FOR MEDIA FILES/UPLOAD
@@ -28,6 +31,8 @@ const upload = multer({
 
 
 router.get('/', indexController);
+router.get('/article/:id', getArticle);
+router.get('/createPost', createPageController);
 router.post('/create', upload.single('thumbnail'), createController)
 router.post('/follow/:userId', followController)
 
